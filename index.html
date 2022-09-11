@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>logieeec</title>
+    <title>logieeegic</title>
 
     <link rel="shortcut icon" href="icons/favicon.ico" type="image/x-icon">
 
@@ -19,6 +19,11 @@
 
    
     <link rel="stylesheet" href="css/slick.css">
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+  />
+
     <link rel="stylesheet" href="css/style.css"/> 
     
         </head>
@@ -502,15 +507,35 @@
                         <div class="block">
                             <div class="elem">
                                  <img src="icon/icon.coll.png" alt="" class="log">
-                        <form class="forms" action="#" id="check">
-                            <label for=""></label>
-                            <input name="name" required placeholder="ваше  имя" type="text">
-                            <input name="phone" required  placeholder="ваш номер телефона" type="number">
-                            <input name="email" required placeholder="ваш e-mail..." type="email">
+                        <form class="forms" name="my" action="#" id="check"> <!--тег name, с помощью JS мы обращаемся к форме через name-->
+
+                            <div class="validation">
+                                <input name="name" placeholder="ваше имя" type="text">
+                                <div class="validation_name"></div> <!--Пустой блок в который с помощью JS будет вствляться текст валидации -->
+                            </div>
+
+                            <div class="validation">
+                                <input name="phone"  placeholder="ваш номер телефона" type="number">
+                                <div class="validation_phone"></div>
+                            </div>
+
+                            <div class="validation">
+                                <input name="email" placeholder="ваш e-mail..." type="email">
+                                <div class="validation_email"></div>
+                            </div>
+
                             <div class="bot">
-                                <button class="button button_btn">Отправить заявку</button>
+                                <button onclick="validationForm(event)" class="button button_btn">
+                                    <!--
+                                        onclick - с помощью этого тега ты по клику вызиваешь функцию и  она выполняется
+                                        validationForm() - функция которая вызивается
+                                        event - это повидение функции при клике
+                                    -->
+                                    Отправить заявку
+                                </button>
                             </div>
                         </form>
+                        
                             </div>
                             <div class="elem">
                               <div class="block--elem__mod1"></div>
@@ -730,11 +755,15 @@
          
             <div class="message_wrap">
 
-                <form class="massage-form" action="#" id="consultation-form">
+                <form class="massage-form" name="form" action="#" id="consultation-form">
 
-                    <input name="name" required placeholder="ваше имя" type="text">
-                    <input name="phone" required placeholder="ваш телефон" type="number">
-                    <input name="email" required placeholder="ваш-email" type="email">
+                    <div class='validation_form'>
+                        <input name="name" placeholder="ваше имя" type="text">
+                        <div class="valid_form__name"></div>
+                    </div>
+                    
+                    <input name="phone" placeholder="ваш телефон" type="number">
+                    <input name="email" placeholder="ваш-email" type="email">
                     <textarea class="message_place" name="" id="" cols="30" rows="10"></textarea>
                   
                         <button class="button button_get">Отправить заявку</button>
@@ -843,22 +872,46 @@
             <div class="modal_close">&times;</div>
             <div class="modal_subtitle">Просто заполните форму заявки</div>
             <div class="modal_descr">и мы вам может быть перезвоним</div>
-            <form class="form" action="#">
-                <input name="name" required  placeholder="ваше имя" type="text">
-                <input name="phone" required  placeholder="ваш телефон" type="number">
-                <input name="email" required placeholder="ваш E-mail" type="email">
-                <button class="button button_submit">Перезвоните мне</button>
+            <form class="form" name="modal" action="#">
+                            <div class="validation">
+                                <input name="name" placeholder="ваше имя" type="text">
+                                <div class="validation_name"></div> <!--Пустой блок в который с помощью JS будет вствляться текст валидации -->
+                            </div>
+
+                            <div class="validation">
+                                <input name="phone"  placeholder="ваш номер телефона" type="number">
+                                <div class="validation_phone"></div>
+                            </div>
+
+                            <div class="validation">
+                                <input name="email" placeholder="ваш e-mail..." type="email">
+                                <div class="validation_email"></div>
+                            </div>
+                <button onclick="validationFormModal(event)" class="button button_submit">Перезвоните мне</button>
             </form>
         </div>
         <div class="modal" id="order">
             <div class="modal_close">&times;</div>
             <div class="modal_subtitle">Ваш заказ</div>
             <div class="modal_descr">и мы вам может быть перезвоним</div>
-            <form class="form" action="#">
-                <input name="name" required placeholder="ваше имя" type="text">
-                <input name="phone" required placeholder="ваш телефон" type="number">
-                <input name="email" required placeholder="ваш E-mail" type="email">
-                <button class="button button_submit">Перезвоните мне</button>
+            <form class="form" name="modal" action="#">
+
+                <div class="validation">
+                    <input name="name" placeholder="ваше имя" type="text">
+                    <div class="validation_name__modal"></div> <!--Пустой блок в который с помощью JS будет вствляться текст валидации -->
+                </div>
+
+                <div class="validation">
+                    <input name="phone"  placeholder="ваш номер телефона" type="number">
+                    <div class="validation_phone__modal"></div>
+                </div>
+
+                <div class="validation">
+                    <input name="email" placeholder="ваш e-mail..." type="email">
+                    <div class="validation_email__modal"></div>
+                </div>
+
+                <button onclick="validationForm(event)" class="button button_submit">Перезвоните мне</button>
             </form>
         </div>
 
@@ -874,11 +927,26 @@
 
     </div>
 
+
+    <div class="your-class">
+        <div>
+            <img src="img/phone.png" alt="">
+        </div>
+        <div>t
+            <img src="img/phone.top.png" alt="">
+        </div>
+       
+      </div>
+                      
+
+
   
         <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
         <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
         <script src="js/slick.min.js"></script>
         <script src="js/jquery.validate.min.js"></script>
         <script src="js/script.js"></script>
+        <script src="js/valodationForm.js"></script>
+        <script src="js/validationFormModal.js"></script>
 </body>
 </html>
